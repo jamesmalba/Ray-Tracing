@@ -13,12 +13,26 @@ class ExampleLayer : public Walnut::Layer
 public:
 	virtual void OnUIRender() override
 	{
+		float r = 0.5f;
+		float g = 0.78f;
+		float b = 0.5f;
+		float lightX = -1.0f;
+		float lightY = -1.0f;
+		float lightZ = -1.0f;
 		ImGui::Begin("Settings");
+		
+
 
 		ImGui::Text("Last render: %.3fms", m_LastRenderTime);
+		ImGui::SliderFloat("R", &r, 0.0f, 1.0f);
+		ImGui::SliderFloat("G", &g, 0.0f, 1.0f);
+		ImGui::SliderFloat("B", &b, 0.0f, 1.0f);
+		ImGui::SliderFloat("X", &lightX, -1.0f, 1.0f);
+		ImGui::SliderFloat("Y", &lightY, -1.0f, 1.0f);
+		ImGui::SliderFloat("Z", &lightZ, -1.0f, 1.0f);
 		if (ImGui::Button("Render"))
 		{
-			Render();
+			Render(lightX, lightY, lightZ, r, g, b);
 		}
 		
 
@@ -39,14 +53,14 @@ public:
 		ImGui::End();
 		ImGui::PopStyleVar();
 
-		Render();
+		Render(lightX, lightY, lightZ, r, g, b);
 	}
-	void Render()
+	void Render(float lx, float ly, float lz, float r, float g, float b)
 	{
 		Timer timer;
 
 		m_Renderer.OnResize(m_ViewportWidth, m_ViewportHeight);
-		m_Renderer.Render();
+		m_Renderer.Render(lx, ly, lz, r, g, b);
 
 		m_LastRenderTime = timer.ElapsedMillis();
 	}

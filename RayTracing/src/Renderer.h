@@ -11,12 +11,15 @@ public:
 	Renderer() = default;
 
 	void OnResize(uint32_t width, uint32_t height);
-	void Render();
+	void Render(float lx, float ly, float lz, float r, float g, float b);
 
 	std::shared_ptr<Walnut::Image> GetFinalImage() const { return m_FinalImage; }
+
 private:	
-	uint32_t PerPixel(glm::vec2 coord);
+	glm::vec4 PerPixel(glm::vec2 coord, float lx, float ly, float lz, float r, float g, float b);
+
 private:
+	
 	std::shared_ptr<Walnut::Image> m_FinalImage;
 	uint32_t* m_ImageData = nullptr;
 };
