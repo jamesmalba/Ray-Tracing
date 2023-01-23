@@ -2,7 +2,5 @@
 
 A ray tracer in C++ using the Vulkan engine.
 
-
-
-https://user-images.githubusercontent.com/102703979/213973734-2fbb1000-6ea0-4c02-a6c3-8e75e988297a.mp4
-
+## Demo
+![Alt Text]![demo](https://user-images.githubusercontent.com/102703979/213974314-e9929816-8713-4525-bbd6-ae8b71ced653.gif)
